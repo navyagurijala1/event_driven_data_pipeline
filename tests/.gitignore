@@ -1,0 +1,30 @@
+# --- Terraform ---
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+*.tfplan
+
+# Keep the lockfile for reproducible builds
+!terraform.lock.hcl
+!.terraform.lock.hcl
+
+# --- Build artifacts (optional) ---
+/build/
+ingest.zip
+process.zip
+writer.zip
+*.zip
+
+# --- OS / Editor junk ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
