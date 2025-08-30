@@ -1,0 +1,26 @@
+{
+  "Comment": "Event-driven user activity pipeline",
+  "StartAt": "Ingest",
+  "States": {
+    "Ingest": {
+      "Type": "Task",
+      "Resource": "${ingest_arn}",
+      "ResultPath": "$.ingest",
+      "Next": "Process"
+    },
+    "Process": {
+      "Type": "Task",
+      "Resource": "${process_arn}",
+      "InputPath": "$.ingest",
+      "ResultPath": "$.process",
+      "Next": "Write"
+    },
+    "Write": {
+      "Type": "Task",
+      "Resource": "${writer_arn}",
+      "InputPath": "$.process",
+      "ResultPath": "$.write",
+      "End": true
+    }
+  }
+}
